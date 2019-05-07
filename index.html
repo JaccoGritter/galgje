@@ -5,18 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Galgje</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <style>
-
+        #send {
+            width: 5em;
+            background-color: yellow;
+        }
     </style>
 
     <script>
-    
+    $(document).ready(function(){
+
+        var word = "code";
+        var answer = "****"
+
+        $("#send").click(function(){
+            var letter = document.getElementById("letter").value;
+            checkLetter(letter);
+        });
+
+        function checkLetter(letter) {
+            for (var i = 0; i < word.length ; i++){
+                if (word[i] == letter) {
+                    console.log("yes");
+
+                } else console.log("no");
+            }
+        }
+
+    });
     </script>
 
 </head>
 
 <body>
     <div id="word">****</div>
+    <p>Kies een letter: <input id="letter" type="text" name="letter"></p>
+    <div id="send">Send</div>
 </body>
 </html>
