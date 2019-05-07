@@ -17,20 +17,29 @@
     <script>
     $(document).ready(function(){
 
-        var word = "code";
-        var answer = "****"
+        var word = "coderen";   // make this word anything you like!!
+        var wordLength = word.length;
+        var gameOver = false;
+        var turns = 10;
+        var answer = "";
+        for (var i=0; i<wordLength; i++) answer+= "*";
+        $("#word").html(answer);
+        
 
         $("#send").click(function(){
             var letter = document.getElementById("letter").value;
+            document.getElementById("letter").value = "";
             checkLetter(letter);
+            if (gameOver) alert ("Game over!");
         });
 
         function checkLetter(letter) {
-            for (var i = 0; i < word.length ; i++){
+            for (var i = 0; i < wordLength ; i++){
                 if (word[i] == letter) {
                     answer = answer.slice(0,i,1) + letter + answer.slice(i+1,answer.length,1);
                  } 
             }
+            if (!answer.includes("*")) gameOver = true;
             $("#word").html(answer);
         }
 
@@ -40,8 +49,8 @@
 </head>
 
 <body>
-    <div id="word">****</div>
-    <p>Kies een letter: <input id="letter" type="text" name="letter"></p>
+    <div id="word"></div>
+    <p>Kies een letter: <input id="letter" maxlength="1" size="1" type="text" name="letter"></p>
     <div id="send">Send</div>
 </body>
 </html>
