@@ -13,7 +13,10 @@ user enters "c" - computer output: c*d*
 
 continue until word is guessed
 
+only one letter can be entered
+you can pick any word to be guessed
+when word is guessed "Game over" is alerted
+
 new:
-* only one letter can be entered
-* you can pick any word to be guessed
-* when word is guessed "Game over" is alerted
+turns added
+when turns=0 "Game over" is alerted
