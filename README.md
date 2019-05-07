@@ -12,3 +12,8 @@ user enters "a" - computer output: **d*
 user enters "c" - computer output: c*d*
 
 continue until word is guessed
+
+new:
+* only one letter can be entered
+* you can pick any word to be guessed
+* when word is guessed "Game over" is alerted
