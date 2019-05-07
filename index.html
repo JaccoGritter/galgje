@@ -34,7 +34,7 @@
     <script>
     $(document).ready(function(){
 
-        var word = "coderen";   // make this word anything you like!!
+        var word = "muziekishartstikkemooi";   // make this word anything you like!!
         word = word.toLowerCase();
         var wordLength = word.length;
         var gameOver = false;
@@ -75,6 +75,7 @@
         function updateScreen() {
             $("#answer").html(answer);
             $("#turns").html("Turns left: " + turns);
+            document.getElementById("galg").innerHTML = "<img src=\"galg" + (10-turns) + ".png\">";
         }
 
     });
@@ -87,5 +88,6 @@
     <div id="turns" class="block"></div>
     <div id="input" class="block">Pick a letter: <input id="letter" maxlength="1" size="1" type="text" name="letter"></div>
     <div id="send" class="block">Send</div>
+    <div id="galg"><img src="galg0.png" alt="GALG"></div>
 </body>
 </html>
