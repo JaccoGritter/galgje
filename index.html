@@ -11,17 +11,40 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            
+            background-color: cornsilk;
+        }
+
+        #container {
+            display: flex;
+        }
+
+        #playingfield {
+            width: 25%;
+            padding: 3em;
+        }
+
+        #galg {
+            width: 25%;
         }
 
         #send {
             width: 5em;
             background-color: yellow;
+            text-align: center;
+            padding-top: 0.5em;
         }
 
         #answer{
             font-family: monospace, sans-serif;
-            font-size: 1.5em;
+            font-size: 2.5em;
+        }
+
+        #endtext{
+            color: rgb(194, 68, 68);
+            width: 20em;
+            height: 2em;
+            padding: 1em;
+            font-size: 3em;
         }
 
         .block {
@@ -40,22 +63,18 @@
         var gameOver = false;
         var turns = 10;
         var answer = "";
-        for (var i=0; i<wordLength; i++) answer+= "*";
+        for (var i=0; i<wordLength; i++) answer+= "*";  // set answer to all asterisks
         updateScreen();
 
         $("#send").click(function(){
-            var letter = document.getElementById("letter").value;
+            var letter = $("#letter").val();
             letter = letter.toLowerCase();
-            document.getElementById("letter").value = "";
+            $("#letter").val("");     // reset input field
             checkLetter(letter);
             updateScreen();
             if (gameOver) {
-                if (turns == 0) {
-                    alert ("Game over!");
-                } else {
-                    alert ("You won!");
+                turns == 0 ? $("#endtext").html("YOU LOOSE........ GAME OVER") : $("#endtext").html("YOU WIN........ GREAT JOB!");
                 }
-            }
         });
 
         function checkLetter(letter) {
@@ -65,7 +84,7 @@
                 return;
             };
             for (var i = 0; i < wordLength ; i++){
-                if (word[i] == letter) {
+                if (word[i] == letter) {              // if word contains letter replace asterisk with letter
                     answer = answer.slice(0,i,1) + letter + answer.slice(i+1,answer.length,1);
                 }
             }
@@ -75,7 +94,7 @@
         function updateScreen() {
             $("#answer").html(answer);
             $("#turns").html("Turns left: " + turns);
-            document.getElementById("galg").innerHTML = "<img src=\"galg" + (10-turns) + ".png\">";
+            $("#galg").html("<img src=\"galg" + (10-turns) + ".png\">");
         }
 
     });
@@ -84,10 +103,19 @@
 </head>
 
 <body>
-    <div id="answer" class="block"></div>
-    <div id="turns" class="block"></div>
-    <div id="input" class="block">Pick a letter: <input id="letter" maxlength="1" size="1" type="text" name="letter"></div>
-    <div id="send" class="block">Send</div>
-    <div id="galg"><img src="galg0.png" alt="GALG"></div>
+    <div id="container">
+        
+        <div id="playingfield">
+            <div id="answer" class="block"></div>
+            <div id="turns" class="block"></div>
+            <div id="input" class="block">Pick a letter: <input id="letter" maxlength="1" size="1" type="text"></div>
+            <div id="send" class="block">check</div>
+        </div>
+
+        <div id="galg"><img src="galg0.png" alt="GALG"></div>
+
+    </div>
+    <div id="endtext"></div>
+
 </body>
 </html>
