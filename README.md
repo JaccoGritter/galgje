@@ -1,5 +1,7 @@
 *** GALGJE GAME ***
 
+Check it out at: https://jaccogritter.github.io/galgje/
+
 Start simple:
 
 Word to be guessed is "code"
